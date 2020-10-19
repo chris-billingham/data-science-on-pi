@@ -26,9 +26,27 @@ Install PostgreSQL (hack away at this <https://community.rstudio.com/t/setting-u
 
 There does need to be a bit in here where we can build the latest from source rather than waiting on Artur but tbh I'm waiting to do 1.4 for the Python updates
 
+**Installing Tidyverse:**
+
+This is needed for openssl/httr/rvest/xml2
+
+    sudo apt-get install -y libssl-dev libxml2-dev libjq-dev libv8-dev
+
 ### Python
 
--   Insert Python
+-   Insert Python 3.9
+
+-   <https://linuxize.com/post/how-to-install-python-3-8-on-debian-10/>
+
+-   Redo the symlink to new python
+
+-   `sudo rm /usr/bin/python3`
+
+-   `ln -s /usr/local/bin/python3.9 /usr/bin/python3`
+
+Create symlink for pip3
+
+-   `sudo ln -s /usr/local/bin/pip3.9 /usr/bin/pip3`
 
 ### Orchestration
 
