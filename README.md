@@ -34,7 +34,7 @@ This is needed for openssl/httr/rvest/xml2
 
 ### Python
 
--   Insert Python 3.9
+-   Insert Python ~~3.9~~ 3.8 because you need to check whether downstream packages support 3.9 you idiot
 
 -   <https://linuxize.com/post/how-to-install-python-3-8-on-debian-10/>
 
@@ -42,11 +42,11 @@ This is needed for openssl/httr/rvest/xml2
 
 -   `sudo rm /usr/bin/python3`
 
--   `ln -s /usr/local/bin/python3.9 /usr/bin/python3`
+-   `ln -s /usr/local/bin/python3.8 /usr/bin/python3`
 
 Create symlink for pip3
 
--   `sudo ln -s /usr/local/bin/pip3.9 /usr/bin/pip3`
+-   `sudo ln -s /usr/local/bin/pip3.8 /usr/bin/pip3`
 
 ### Orchestration
 
