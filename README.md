@@ -77,6 +77,7 @@ Create symlink for pip3
     --backend-store-uri postgresql+psycopg2://{user}:{pass}@modern-life-is-rubbish.local:5432/mlflow \
     --default-artifact-root /home/pi/nas-share/mlflow \
     --host 0.0.0.0`
+    Use this to get it added to systemd as it doesn't have a headless mode: https://towardsdatascience.com/setup-mlflow-in-production-d72aecde7fef or https://pedro-munoz.tech/how-to-setup-mlflow-in-production/
 
 -   Kubeflow
 
