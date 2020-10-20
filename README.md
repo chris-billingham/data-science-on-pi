@@ -6,7 +6,7 @@ This is going to be a kind of rolling document I'll be using as I'm setting up, 
 
 -   Raspberry Pi OS Lite
 
--   hostnames is important
+-   hostnames is important, but why have i got `.local` post-pended now?
 
 -   Set up all the various fstab things
 
