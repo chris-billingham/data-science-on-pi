@@ -11,10 +11,10 @@ This is going to be a kind of rolling document I'll be using as I'm setting up, 
 -   Set up all the various fstab things
 
 -   Set up AFP and SMB (config stuff)
-Better prompt at this to .bashrc under if ["$color_prompt"]
+Better prompt at this to .bashrc under if ["$color_prompt"] (courtesy of https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
 `PS1='\[\033[1;36m\][\D{%Y-%m-%d} \A] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '`
 
-Sort the dates out in ls
+Sort the dates out in ls (partly stolen from http://xahlee.info/linux/bash_prompt_setup.html)
 `alias ls='ls -AlF --color=auto --time-style=long-iso'`
 
 ### Database
