@@ -72,8 +72,16 @@ Create symlink for pip3
 
 ### ML Ops
 
--   MLFlow
+-   MLFlow - Actually installing this is pretty easy following: https://mlflow.org/docs/latest/quickstart.html also steal and convert this (https://stackoverflow.com/questions/58380835/implementing-postgres-sql-in-apache-airflow) to set up the server with the postgres backend we're using for airflow (https://mlflow.org/docs/latest/tracking.html#tracking-server)  
+`mlflow server \
+    --backend-store-uri postgresql+psycopg2://{user}:{pass}@modern-life-is-rubbish.local:5432/mlflow \
+    --default-artifact-root /home/pi/nas-share/mlflow \
+    --host 0.0.0.0`
 
 -   Kubeflow
 
 -   Metaflow
+
+
+
+sql_alchemy_conn = postgresql+psycopg2://mlflow:mlflow@modern-life-is-rubbish.local:5432/mlflow
