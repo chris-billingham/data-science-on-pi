@@ -62,7 +62,7 @@ Create symlink for pip3
 
 -   change backend to postgres as we installed that before (setup the user with a password though): <https://stackoverflow.com/questions/58380835/implementing-postgres-sql-in-apache-airflow>
 
--   remove the example dags from the db in `airflow.cfg`
+-   remove the example dags from the db in `airflow.cfg`  
 
 #### Argo
 
