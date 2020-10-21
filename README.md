@@ -10,12 +10,12 @@ This is going to be a kind of rolling document I'll be using as I'm setting up, 
 
 -   Set up all the various fstab things
 
--   Set up AFP and SMB (config stuff)  
+-   Set up AFP and SMB (config stuff)
 
-Better prompt at this to .bashrc under if ["$color_prompt"] (courtesy of https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)  
+Better prompt at this to .bashrc under if ["\$color\_prompt"] (courtesy of <https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/>)\
 `PS1='\[\033[1;36m\][\D{%Y-%m-%d} \A] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '`
 
-Sort the dates out in ls (partly stolen from http://xahlee.info/linux/bash_prompt_setup.html)  
+Sort the dates out in ls (partly stolen from <http://xahlee.info/linux/bash_prompt_setup.html>)\
 `alias ls='ls -AlF --color=auto --time-style=long-iso'`
 
 ### Database
@@ -62,7 +62,7 @@ Create symlink for pip3
 
 -   change backend to postgres as we installed that before (setup the user with a password though): <https://stackoverflow.com/questions/58380835/implementing-postgres-sql-in-apache-airflow>
 
--   remove the example dags from the db in `airflow.cfg`  
+-   remove the example dags from the db in `airflow.cfg`
 
 #### Argo
 
@@ -72,17 +72,9 @@ Create symlink for pip3
 
 ### ML Ops
 
--   MLFlow - Actually installing this is pretty easy following: https://mlflow.org/docs/latest/quickstart.html also steal and convert this (https://stackoverflow.com/questions/58380835/implementing-postgres-sql-in-apache-airflow) to set up the server with the postgres backend we're using for airflow (https://mlflow.org/docs/latest/tracking.html#tracking-server)  
-`mlflow server \
-    --backend-store-uri postgresql+psycopg2://{user}:{pass}@modern-life-is-rubbish.local:5432/mlflow \
-    --default-artifact-root /home/pi/nas-share/mlflow \
-    --host 0.0.0.0`
-    Use this to get it added to systemd as it doesn't have a headless mode: https://towardsdatascience.com/setup-mlflow-in-production-d72aecde7fef or https://pedro-munoz.tech/how-to-setup-mlflow-in-production/
+-   MLFlow - Actually installing this is pretty easy following: <https://mlflow.org/docs/latest/quickstart.html> also steal and convert this (<https://stackoverflow.com/questions/58380835/implementing-postgres-sql-in-apache-airflow>) to set up the server with the postgres backend we're using for airflow (<https://mlflow.org/docs/latest/tracking.html#tracking-server>)\
+    `mlflow server \     --backend-store-uri postgresql+psycopg2://{user}:{pass}@modern-life-is-rubbish.local:5432/mlflow \     --default-artifact-root /home/pi/nas-share/mlflow \     --host 0.0.0.0` Use this to get it added to systemd as it doesn't have a headless mode: <https://towardsdatascience.com/setup-mlflow-in-production-d72aecde7fef> or <https://pedro-munoz.tech/how-to-setup-mlflow-in-production/> Ok this has proved more difficult for some reason I cannot work out. I'll `tmux` it for now and come back to that
 
 -   Kubeflow
 
 -   Metaflow
-
-
-
-sql_alchemy_conn = postgresql+psycopg2://mlflow:mlflow@modern-life-is-rubbish.local:5432/mlflow
