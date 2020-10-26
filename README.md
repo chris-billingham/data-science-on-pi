@@ -38,6 +38,14 @@ This is needed for openssl/httr/rvest/xml2
 
     sudo apt-get install -y libssl-dev libxml2-dev libjq-dev libv8-dev
 
+### Installing Apache Arrow both C++ and R Package
+
+Wow this was quite the journey. So this key to getting it going was using this <https://raspberrypi.stackexchange.com/questions/110958/error-in-pyarrow-while-installing-apache-beam-in-raspberry-pi?newreg=c1e66818f67c4447885d6f5a5aea0038>  with the answer from the dude that is Stuart, answered Oct 18 at 22:53.  
+
+Things we have learned:  
+Don't think you're smart and install LLVM v11.0.0 over v10.0.1 as it had just come out because then you're **not** following instructions and need to be shot. What ended up happening was that I *appeared* to be running out of memory of some kind (both normal and VM [despite bumping the swap RAM up to 2GB]) which was causing the very end of the build from `make -j4` to keel over at around 97%. Changing to just `make` or using `make -l 1` again wasn't helpful. I also tried changed the linker from `LD` to `gold` with `-DLLVM_USE_LINKER=gold` in CMake, plus adding `-DLLVM_TARGETS_TO_BUILD=ARM` (most of that info from <https://stackoverflow.com/questions/25197570/llvm-clang-compile-error-with-memory-exhausted>) but LLVM 11 just didn't want any. So I went back and followed the instructions (but did leave in gold linker and the targets to build) for 10.0.1 and it installed fine. I had been running the installation in a `tmux` session so I wasn't sure whether that was doing it but hey ho, it worked... by following the instructions.  
+Following the above to install Arrow C++ libraries was 100% fine with no changes other than building v2.0.0 which had just come out but it worked fine. HOWEVER, for some reason whenever I would trying and install the R `arrow` package I'd get `libarrow.so.200: undefined symbol: __atomic_load_8` right at the end. Oh boy did I try a tonne of things, adding folders to `LD_LIBRARY` so that it could see the libatomic, rebuiling arrow and pointing to libatomic in the CMake. Tonnes. Just wouldn't have any of it. In the end, (after having to fix R not loading due to not knowing where `libRblas.so` so had to `export LD_LIBRARY_PATH="/usr/local/lib/R/lib:$LD_LIBRARY_PATH"` but I'm sure I messed that up sodding around with `libatomic`), I bodged it by hacking at the last bit to load R like `LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 R` then installing the `arrow` package at the CLI. Which of course then went fine and seems to have worked. I don't know if Dimitry's comment at <https://raspberrypi.stackexchange.com/questions/110958/error-in-pyarrow-while-installing-apache-beam-in-raspberry-pi?newreg=c1e66818f67c4447885d6f5a5aea0038#comment203248_117723> would've stopped the pain but I had got minor PTSD from it all and had something that works. Something for another day.  
+
 ### Python
 
 -   Insert Python ~~3.9~~ 3.8 because you need to check whether downstream packages support 3.9 you idiot
