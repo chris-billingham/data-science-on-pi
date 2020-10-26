@@ -1,12 +1,14 @@
 # Data Science on the Raspberry Pi
 
-This is going to be a kind of rolling document I'll be using as I'm setting up, initially, a Raspberry Pi for doing Data Science. This will include experimentation with various ML Ops tools as well.
+This is going to be a kind of rolling document I'll be using as I'm setting up, initially, a Raspberry Pi for doing Data Science. This will include experimentation with various ML Ops tools as well.  
+
+To give some context, I don't have much Linux/Comp Sci experience outside of what is needed to make Docker do the things you need a (or some) Docker to do. My learning style is do, fail, learn, repeat very loudly and I'm sure I'll be making errors that look painfully obvious to many. Ultimately this document will be translated into something more formal like a series of blog posts w. scripting once I've got my head around everything I'm trying to do. But for now, buckle up!  
 
 ### Initial Setup
 
 -   Raspberry Pi OS Lite
 
--   hostnames is important, but why have i got `.local` post-pended now?
+-   hostnames is important, but why have i got `.local` post-pended now? (something something `avahi`?)
 
 -   Set up all the various fstab things
 
@@ -24,13 +26,13 @@ Install PostgreSQL (hack away at this <https://community.rstudio.com/t/setting-u
 
 ### R and R Studio
 
--   Install Java because its comes up <https://linuxize.com/post/install-java-on-raspberry-pi/>
+-   Install Java because its comes up <https://linuxize.com/post/install-java-on-raspberry-pi/> (Note to self god imagine what getting `RJava` to work is going to be like, my magic fixing spells only work on MacOS)  
 
 -   Install R but build from source (most of it courtesy of this <https://community.rstudio.com/t/setting-up-your-own-shiny-server-rstudio-server-on-a-raspberry-pi-3b/18982> )
 
 -   Install R Studio for Pi (most of this <https://github.com/ArturKlauser/raspberrypi-rstudio#installing-rstudio-natively-on-your-raspberry-pi> wget this: <https://github.com/ArturKlauser/raspberrypi-rstudio/releases/download/v1.5/rstudio-server-1.2.5033-1.r2r.buster_armhf.deb> )
 
-There does need to be a bit in here where we can build the latest from source rather than waiting on Artur but tbh I'm waiting to do 1.4 for the Python updates
+There does need to be a bit in here where we can build the latest from source rather than waiting on Artur but tbh I'm waiting to do 1.4 for the Python updates. At some point I'm going to end up doing this myself but need a bit of a run up.  
 
 **Installing Tidyverse:**
 
@@ -71,6 +73,9 @@ Create symlink for pip3
 -   change backend to postgres as we installed that before (setup the user with a password though): <https://stackoverflow.com/questions/58380835/implementing-postgres-sql-in-apache-airflow>
 
 -   remove the example dags from the db in `airflow.cfg`
+
+-   if things don't work in Daemon mode sometimes you have to go into the `airflow` folder and deleted the airflow-***.pid file and it starts working again.  
+
 
 #### Argo
 
