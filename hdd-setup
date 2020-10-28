@@ -1,0 +1,14 @@
+# automatically mount 12TB HDD as /home/pi/usb on raspberry pi
+# ls -l /dev/disk/by-uuid/ to check the UUID after df -h
+# add this to fstab vis sudo nano /etc/fstab, ensure this is tabbed
+UUID=90006ABC006AA944 /home/pi/usb  ntfs-3g rw,exec,nofail,uid=pi,gid=pi,umask=022  0 2
+
+
+# mount the samba share as a directory
+sudo mount.cifs //leisure/maccoldroad /home/pi/nas-share -o user=pi
+
+# mount the samba share in fstab
+//leisure/maccoldroad /home/pi/nas-share cifs _netdev,username=pi,password=lyra3107,uid=pi,gid=pi,x-systemd.automount   0       0
+
+# mount the 1tb hdd with ext4 to modern-life-is-rubbish. remember to sudo chown pi:pi -R /home/pi/usb-hdd/ so that pi pi has permissions
+UUID="07ca27ed-fc4c-49e3-b94d-728ee8c90b9c"     /home/pi/usb-hdd        ext4    nofail,defaults 0       0
