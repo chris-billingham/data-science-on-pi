@@ -20,6 +20,18 @@ Better prompt at this to .bashrc under if ["\$color\_prompt"] (courtesy of <http
 Sort the dates out in ls (partly stolen from <http://xahlee.info/linux/bash_prompt_setup.html>)\
 `alias ls='ls -AlF --color=auto --time-style=long-iso'`
 
+### UPDATE
+
+Well this is a game changer: <https://andresrcs.rbind.io/2021/01/13/raspberry_pi_server/#download-and-configure-the-playbooks>
+
+Using Ansible to set it all up and then install RStudio 1.4 makes all the difference. I ended up hacking away at a few things like what is in the playbooks (I wasn't about to do all the secure the server stuff) and using the `ansible -ask-pass` because I never quite for the ssh keys set up properly. But it worked pretty great.
+
+I did have to do the below as there was sometimes some weird errors initially install package updates within R, I'd end up have to run `sudo R` to install the updates.
+
+`sudo chmod -R rstudio+ /usr/local/lib/R/site-library`
+
+`sudo chmod -R 777 /usr/local/lib/R/site-library`
+
 ### Database
 
 Install PostgreSQL (hack away at this <https://community.rstudio.com/t/setting-up-your-own-shiny-server-rstudio-server-on-a-raspberry-pi-3b/18982>)
